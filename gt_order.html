@@ -34,9 +34,7 @@
             <div class="resnotice">
                 <div class="icon"><img src="https://gtweixin.nlc.cn/public/subscribe/images/result-success.png" alt=""></div>
                 <div class="text">已预约，可进入</div>
-                <!--
-                <div class="note">今日第<span style="font-weight: bold; padding: 0px 3px;color: #ff0000;">1</span>次进入</div>
-                -->
+                <div id="enter_times" style="display: none"  class="note">今日第<span style="font-weight: bold; padding: 0px 3px;color: #ff0000;">2</span>次进入</div>
                 <div id="now_id" class="note">2022-09-24 09:02:59</div>
             </div>
             <div class="resintro">
@@ -102,8 +100,10 @@ var DateToformatDate = (date, fmt) => {
     document.getElementById("booktime").innerText=DateToformatDate(d,"YYYY-MM-DD 9:00-17:00")
     document.getElementById("book_num").innerText=DateToformatDate(d,"YYYYMMDD05030")
     document.getElementById("now_id").innerText=DateToformatDate("","YYYY-MM-DD HH:mm:ss")
-//console.log(DateToformatDate("","YYYY年MM月DD日HH:mm"))
-//console.log(DateToformatDate("","YYYY-MM-DD HH:mm:ss"))
+
+    if (d.getHours() > 12) {
+        document.getElementById("enter_times").style.display="inline";//显示
+    }
 
     window.alert = function (name) {
         var iframe = document.createElement("IFRAME");
